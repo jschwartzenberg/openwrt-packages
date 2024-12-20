@@ -49,6 +49,9 @@ CONFIGURE_ARGS += \
 	--enable-static \
 	--disable-asm \
 	--disable-doc \
+	--enable-ciphers='des,aes' \
+	--enable-pubkey-ciphers='' \
+	--enable-digests='md5,sha1,blake2' \
 	--with-gpg-error-prefix="$(STAGING_DIR)/usr"
 
 TARGET_CFLAGS += $(FPIC)

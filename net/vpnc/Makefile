@@ -23,6 +23,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_CONFIG_DEPENDS:= \
 	CONFIG_VPNC_GNUTLS \
 	CONFIG_VPNC_OPENSSL \
+        CONFIG_VPNC_NOTLS \
 
 
 include $(INCLUDE_DIR)/package.mk
@@ -61,6 +62,7 @@ define Package/vpnc/conffiles
 endef
 
 OPENSSL-y:=OPENSSL_GPL_VIOLATION=yes
+NOTLS-y:=CRYPTO_NONE=yes
 
 define Build/Compile
 	mkdir $(PKG_BUILD_DIR)/bin
@@ -69,6 +71,7 @@ define Build/Compile
 		OS="Linux" \
 		VERSION="$(PKG_VERSION)" \
 		$(OPENSSL-$(CONFIG_VPNC_OPENSSL)) \
+		$(NOTLS-$(CONFIG_VPNC_NOTLS)) \
 		vpnc \
 	)
 endef
